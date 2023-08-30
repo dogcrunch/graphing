@@ -35,15 +35,16 @@ function graphFunc()
 
 	for (let i = 0; i < segments; i++)
 	{
-		if (i%2==0){ 
-			ctx.stroke();
-			ctx.beginPath();
-		}
+		
 		if (typeof(_graphFunction(x)) == "number")
 		{
 			let x0 = balls(xMin, xMax, x)*canvas.width;
 			let y0 = (1-balls(yMin, yMax, _graphFunction(x)))*canvas.height;
 			ctx.lineTo(x0,y0);
+		}
+		if (i%2==0){ 
+			ctx.stroke();
+			ctx.beginPath();
 		}
 		x+=(xMax-xMin)/(segments-1);
 	}
