@@ -32,7 +32,8 @@ function graphFunc()
 	ctx.lineWidth = 2;
 
 	let segments = 100;
-	ctx.beginPath();
+	let prevX = 0;
+	prevY = 0;
 	for (let i = 0; i < segments; i++)
 	{
 		
@@ -40,12 +41,21 @@ function graphFunc()
 		{
 			let x0 = balls(xMin, xMax, x)*canvas.width;
 			let y0 = (1-balls(yMin, yMax, _graphFunction(x)))*canvas.height;
-			ctx.lineTo(x0,y0);
+
+			if (i>0)
+			{
+				ctx.beginPath();
+				ctx.moveTo(prevX,prevY);
+				ctx.lineTo(x0,y0);
+				ctx.stroke();
+			}
+			
+			prevX = x0;
+			prevY=y0;
 		}
 
 		x+=(xMax-xMin)/(segments-1);
 	}
-	ctx.stroke();
 }
 
 onkeypress = (event) => {
