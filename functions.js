@@ -21,6 +21,7 @@ const atan = (x) => Math.atan(x);
 const rgb = (r,g,b) => "rgb("+r+","+g+","+b+")"
 
 function hsv(h, s, v) {
+	h = abs(h);
   var r, g, b;
 
   var i = Math.floor(h * 6);
