@@ -55,36 +55,36 @@ keypress = (event) => {
 		case "w":
 		yMin+=(yMax-yMin)/30
 		yMax+=(yMax-yMin)/30
-		graph();
+		graphFunc();
 		break;
 		case "s":
 		yMin-=(yMax-yMin)/30
 		yMax-=(yMax-yMin)/30
-		graph();
+		graphFunc();
 		break;
 		case "d":
 		xMin+=(xMax-xMin)/30
 		xMax+=(xMax-xMin)/30
-		graph();
+		graphFunc();
 		break;
 		case "a":
 		xMin-=(xMax-xMin)/30
 		xMax-=(xMax-xMin)/30
-		graph();
+		graphFunc();
 		break;
 		case "q":
 		yMin+=(yMax-yMin)/30
 		yMax-=(yMax-yMin)/30
 		xMin+=(xMax-xMin)/30
 		xMax-=(xMax-xMin)/30
-		graph();
+		graphFunc();
 		break;
 		case "e":
 		yMin-=(yMax-yMin)/30
 		yMax+=(yMax-yMin)/30
 		xMin-=(xMax-xMin)/30
 		xMax+=(xMax-xMin)/30
-		graph();
+		graphFunc();
 		break;
 	}
 };
