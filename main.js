@@ -6,6 +6,8 @@ let xMin = -10;
 let xMax = 10;
 let yMin = -10;
 let yMax = 10;
+let prevX = 0;
+let prevY = 0;
 let graphNumber = 0;
 
 function balls(a,b,v)
@@ -32,8 +34,6 @@ function graphFunc()
 	ctx.lineWidth = 2;
 
 	let segments = 100;
-	let prevX = 0;
-	let prevY = 0;
 	for (let i = 0; i < segments; i++)
 	{
 		
