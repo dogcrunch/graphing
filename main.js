@@ -17,32 +17,13 @@ function graph()
 {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-	let text = ex.value;
-	let functions = [...text.matchAll(/[A-Za-z,]+[(][A-Za-z, ]+[)][ ]*[=]/g)];
-	let addedLength = 0;
-	for (let i = 0; i < functions.length;i++)
-	{
-		let initLength = text.length;
-		functions[i].index+=addedLength;
-		console.log(functions[i].index)
-		let firstP = text.indexOf("(",functions[i].index);
-		let secondP = text.indexOf(")",functions[i].index);
-		let args = text.substring(firstP+1,secondP);
-		let startText = "function(" + args + ") { return "
-		text = text.slice(0, functions[i].index+functions[i][0].length)
-        + startText +text.slice(functions[i].index+functions[i][0].length);
-		let nextLine = text.indexOf("\n",functions[i].index);
-		let bracketindex = (nextLine!=-1)?nextLine:text.length;
-		text = text.slice(0, bracketindex) + "}" +text.slice(bracketindex);
-		text=text.slice(0,firstP)+text.slice(secondP+1,text.length);
-		addedLength += text.length-initLength;
-	}
-	console.log(text);
+	let text = parse(ex.value);
+	
 	eval(text);
+
 	let graph;
 	
 	eval("graph = (x) => "+eq.value);
-	console.log(graph(2));
 	ctx.beginPath();
 
 	let x = xMin;
