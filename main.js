@@ -32,7 +32,8 @@ function graphFunc()
 
 	ctx.strokeStyle = "red";
 	ctx.lineWidth = 2;
-
+	prevX = false;
+	prevY = false;
 	let segments = 100;
 	for (let i = 0; i < segments; i++)
 	{
