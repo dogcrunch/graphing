@@ -32,7 +32,7 @@ function graphFunc()
 	ctx.lineWidth = 2;
 
 	let segments = 100;
-
+	ctx.beginPath();
 	for (let i = 0; i < segments; i++)
 	{
 		
@@ -42,10 +42,7 @@ function graphFunc()
 			let y0 = (1-balls(yMin, yMax, _graphFunction(x)))*canvas.height;
 			ctx.lineTo(x0,y0);
 		}
-		if (i%2==0){ 
-			ctx.stroke();
-			ctx.beginPath();
-		}
+
 		x+=(xMax-xMin)/(segments-1);
 	}
 	ctx.stroke();
