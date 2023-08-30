@@ -6,8 +6,7 @@ let xMin = -10;
 let xMax = 10;
 let yMin = -10;
 let yMax = 10;
-let prevX = 0;
-let prevY = 0;
+
 let graphNumber = 0;
 
 function balls(a,b,v)
