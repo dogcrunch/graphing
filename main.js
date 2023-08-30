@@ -33,7 +33,7 @@ function graphFunc()
 
 	let segments = 100;
 	let prevX = 0;
-	prevY = 0;
+	let prevY = 0;
 	for (let i = 0; i < segments; i++)
 	{
 		
