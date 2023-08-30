@@ -42,3 +42,11 @@ const monkey = function(x,y,w,h)
     ctx.drawImage(image,balls(xMin, xMax, x)*canvas.width,(1-balls(yMin, yMax, y))*canvas.height,w*canvas.width/(xMax-xMin),h*canvas.height/(yMax-yMin)); 
     return false;
 };
+
+
+const graph = function(x,y,color)
+{
+	ctx.strokeStyle=color;
+	ctx.lineTo(balls(xMin, xMax, x)*canvas.width,(1-balls(yMin, yMax, y))*canvas.height);
+	return "";
+};
