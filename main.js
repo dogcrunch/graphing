@@ -24,7 +24,7 @@ function graphFunc()
 	let _graphFunction;
 	
 	eval("_graphFunction = (x) => "+parse(eq.value));
-	ctx.beginPath();
+	
 
 	let x = xMin;
 
@@ -35,6 +35,7 @@ function graphFunc()
 
 	for (let i = 0; i < segments; i++)
 	{
+		if (i%4==0) ctx.beginPath();
 		if (typeof(_graphFunction(x)) == "number")
 		{
 			let x0 = balls(xMin, xMax, x)*canvas.width;
@@ -42,7 +43,7 @@ function graphFunc()
 			ctx.lineTo(x0,y0);
 		}
 		x+=(xMax-xMin)/(segments-1);
-		
+		if (i%4==3) ctx.stroke();
 	}
 	ctx.stroke();
 }
