@@ -69,7 +69,17 @@ const monkey = function(x,y,w,h)
 
 const graph = function(x,y,color)
 {
-	ctx.strokeStyle=color;
-	ctx.lineTo(balls(xMin, xMax, x)*canvas.width,(1-balls(yMin, yMax, y))*canvas.height);
+	let x0 = balls(xMin, xMax, x)*canvas.width;
+	let y0 = (1-balls(yMin, yMax, y))*canvas.height;
+	if (!(prevX===false))
+	{
+		ctx.beginPath();
+		ctx.strokeStyle=color;
+		ctx.moveTo(prevX,prevY);
+		ctx.lineTo(x0,y0);
+		ctx.stroke();
+	}
+	prevX = x0;
+	prevY = y0;
 	return "";
 };
