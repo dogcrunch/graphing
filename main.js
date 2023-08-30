@@ -13,17 +13,17 @@ function balls(a,b,v)
 	return (v-a)/(b-a);
 }
 
-function graph()
+function graphFunc()
 {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 	let text = parse(ex.value);
-	
+
 	eval(text);
 
-	let graph;
+	let _graphFunction;
 	
-	eval("graph = (x) => "+eq.value);
+	eval("_graphFunction = (x) => "+parse(eq.value));
 	ctx.beginPath();
 
 	let x = xMin;
@@ -35,10 +35,10 @@ function graph()
 
 	for (let i = 0; i < segments; i++)
 	{
-		if (typeof(graph(x)) == "number")
+		if (typeof(_graphFunction(x)) == "number")
 		{
 			let x0 = balls(xMin, xMax, x)*canvas.width;
-			let y0 = (1-balls(yMin, yMax, graph(x)))*canvas.height;
+			let y0 = (1-balls(yMin, yMax, _graphFunction(x)))*canvas.height;
 			ctx.lineTo(x0,y0);
 		}
 		x+=(xMax-xMin)/(segments-1);
