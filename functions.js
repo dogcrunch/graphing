@@ -1,5 +1,7 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+let prevX = 0;
+let prevY = 0;
 
 const pi = Math.PI;
 const e = Math.E;
