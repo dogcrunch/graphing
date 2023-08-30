@@ -47,9 +47,9 @@ function graphFunc()
 	ctx.stroke();
 }
 
-addEventListener("keypress", (event) => {});
+addEventListener("keypress", keypress);
 
-onkeypress = (event) => {
+keypress = (event) => {
 	switch(event.key)
 	{
 		case "w":
