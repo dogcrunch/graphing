@@ -95,5 +95,12 @@ onkeypress = (event) => {
 		xMax+=(xMax-xMin)/30
 		graphFunc();
 		break;
+		case "r":
+		yMin = -10;
+		yMax = 10;
+		xMin = -10;
+		xMax = 10;
+		graphFunc();
+		break;
 	}
 };
