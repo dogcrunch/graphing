@@ -7,7 +7,6 @@ const parse = function(text)
 	{
 		let initLength = text.length;
 		functions[i].index+=addedLength;
-		console.log(functions[i].index)
 		let firstP = text.indexOf("(",functions[i].index);
 		let secondP = text.indexOf(")",functions[i].index);
 		let args = text.substring(firstP+1,secondP);
@@ -31,7 +30,8 @@ const findEndOfGroup = function(text,start, backwards=false)
     {
         if (text[i]=="(") p++;
         else if (text[i]==")") p--;
-        if (p==0&&i!=start) return i;
+        if (text == ")"&&(p==0&&i!=start)) return i;
+        if (p==0&&"!@#$%^&*-+.,=".includes(text[i])) return backwards?(i+1):(i);
     }
     return backwards?0:text.length;
 }
@@ -58,16 +58,10 @@ const power = function(text)
         occurences[i].index+=add;
         let middle = text.indexOf("^",occurences[i].index);
         let end1;
-        if (text[middle-1]==")")
-            end1 = findEndOfGroup(text,middle-1,true);
-        else
-            end1 = occurences[i].index;
+        end1 = findEndOfGroup(text,middle-1,true);
 
         let end2;
-        if (text[middle+1]=="(")
-            end2 = findEndOfGroup(text,middle+1,false);
-        else
-            end2 = occurences[i].index+occurences[i][0].length;
+        end2 = findEndOfGroup(text,middle+1,false);
 
         let val1 = text.slice(end1,middle);
         let val2 = text.slice(middle+1,end2);
