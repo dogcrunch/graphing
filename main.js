@@ -289,7 +289,12 @@ function update()
 	t = new Date().getTime()/1000;
 	try{
 		if (document.getElementById("updateGraph").checked)
+		{
+			document.getElementById("graphBtn").style.display="none";
 		graphFunc();
+		}
+		else
+			document.getElementById("graphBtn").style.display="";
 
 	}
 	catch{
