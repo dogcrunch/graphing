@@ -42,6 +42,8 @@ function hsv(h, s, v) {
   return rgb(r * 255, g * 255, b * 255);
 }
 
+const noise2d = (x,y) => noise.simplex2(x,y);
+const noise3d = (x,y,z) => noise.simplex3(x,y,z);
 const sum = function(f,n,k) {
 	let i = 0;
 	for (let x = n; x < k;x++)
@@ -61,28 +63,27 @@ const or = function(f,n,k) {
 }
 const penis = (x) => (abs(x) < 1.5 && abs(x)>0.5) ? 1 : (abs(x)<=0.5) ? 7 : 0;
 
-const image = document.createElement('img');
-image.src = "methmonkey.jpg"
-const monkey = function(x,y,w,h)
+function hexToRgb(hex) {
+	var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+	if (result)
+	return "rgb("+parseInt(result[1],16)+","+parseInt(result[2],16)+","+parseInt(result[3],16)+")";
+	return "black";
+}
+
+
+const monkey = function(x,y)
 {
-    ctx.drawImage(image,balls(xMin, xMax, x)*canvas.width,(1-balls(yMin, yMax, y))*canvas.height,w*canvas.width/(xMax-xMin),h*canvas.height/(yMax-yMin)); 
-    return false;
+	y=194-y
+    if (x<0 || y<0 || x>=259 || y>=194) return "black";
+	return hexToRgb(monkeyHexString[floor(x)+floor(y)*259]); 
 };
 
 
-const graph = function(x,y,color)
+const graph2D = function(x,y,color)
 {
 	let x0 = balls(xMin, xMax, x)*canvas.width;
 	let y0 = (1-balls(yMin, yMax, y))*canvas.height;
-	if (!(prevX===false))
-	{
-		ctx.beginPath();
-		ctx.strokeStyle=color;
-		ctx.moveTo(prevX,prevY);
-		ctx.lineTo(x0,y0);
-		ctx.stroke();
-	}
-	prevX = x0;
-	prevY = y0;
+	ctx.fillStyle=color;
+	ctx.fillRect(x0,y0, canvas.width/100, canvas.height/100);
 	return "";
-};
+}
