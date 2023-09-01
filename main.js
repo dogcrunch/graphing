@@ -203,6 +203,8 @@ document.addEventListener("keypress", function(event) {
 		xMax = 10;
 		break;
 	}
+	if (document.activeElement.tagName.toLowerCase()!="input"&&document.activeElement.tagName.toLowerCase()!="textarea")
+		graphFunc();
   });
 window.onload=function()
 {
