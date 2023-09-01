@@ -52,7 +52,7 @@ function graphFunc()
 	let digits = floor(Math.log10(xMax-xMin));
 	let multiplier = pow(10,3-digits)
 	if (mouseHover)
-	ctx.strokeText("("+floor(cock(xMin,xMax,mouseX/canvas.width)*multiplier)/multiplier+","+floor(cock(yMin,yMax,mouseY/canvas.height)*multiplier)/multiplier+")",mouseX,mouseY)
+	ctx.strokeText("("+floor(cock(xMin,xMax,mouseX/canvas.width)*multiplier)/multiplier+","+floor(cock(yMin,yMax,1-mouseY/canvas.height)*multiplier)/multiplier+")",mouseX,mouseY)
 	}
 	
 }
@@ -111,7 +111,7 @@ function colorGraph(i)
 	let digits = floor(Math.log10(xMax-xMin));
 	let multiplier = pow(10,3-digits)
 	let xRead= cock(xMin,xMax,mouseX/canvas.width)
-	let yRead= cock(yMin,yMax,mouseX/canvas.height)
+	let yRead= cock(yMin,yMax,1-mouseY/canvas.height)
 	
 	if (mouseHover)
 	ctx.strokeText("("+floor(xRead*multiplier)/multiplier+","+floor(yRead*multiplier)/multiplier+","+floor(_graphFunction(xRead,yRead)*multiplier)/multiplier+")",mouseX,mouseY)
