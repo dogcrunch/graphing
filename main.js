@@ -171,18 +171,22 @@ document.addEventListener("keypress", function(event) {
 		case "w":
 		yMin+=(yMax-yMin)/scale
 		yMax+=(yMax-yMin)/scale
+		onupkey()
 		break;
 		case "s":
 		yMin-=(yMax-yMin)/scale
 		yMax-=(yMax-yMin)/scale
+		ondownkey()
 		break;
 		case "d":
 		xMin+=(xMax-xMin)/scale
 		xMax+=(xMax-xMin)/scale
+		onrightkey()
 		break;
 		case "a":
 		xMin-=(xMax-xMin)/scale
 		xMax-=(xMax-xMin)/scale
+		onleftkey()
 		break;
 		case "q":
 		yMin+=(yMax-yMin)/scale
