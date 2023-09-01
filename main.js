@@ -165,7 +165,7 @@ function lineGraph(i)
 	}
 }
 document.addEventListener("keypress", function(event) {
-	let scale = document.getElementById("updateGraph").checked ? 30 : 5
+	let scale = document.getElementById("updategraph").checked ? 30 : 5
 	switch(event.key)
 	{
 		case "w":
@@ -288,7 +288,7 @@ function update()
 {
 	t = new Date().getTime()/1000;
 	try{
-		if (document.getElementById("updateGraph").checked)
+		if (document.getElementById("updategraph").checked)
 		{
 			document.getElementById("graphBtn").style.display="none";
 		graphFunc();
