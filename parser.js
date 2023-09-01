@@ -1,7 +1,7 @@
 const parse = function(text)
 {
     text = multiplication(power(text));
-    let functions = [...text.matchAll(/[A-Za-z,]+[(][A-Za-z, ]+[)][ ]*[=]/g)];
+    let functions = [...text.matchAll(/[A-Za-z,]+[(][A-Za-z, ]*[)][ ]*[=]/g)];
 	let addedLength = 0;
 	for (let i = 0; i < functions.length;i++)
 	{
