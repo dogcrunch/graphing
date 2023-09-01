@@ -77,7 +77,7 @@ function colorGraph(i)
 	let xval = xMin;
 	let yval = yMin;
 
-	let segments = 100;
+	let segments = document.getElementById("resolution").value;
 	for (let i = 0; i < segments; i++)
 	{
 		yval=yMin
@@ -140,7 +140,7 @@ function lineGraph(i)
 	ctx.lineWidth = 2;
 	prevX = false;
 	prevY = false;
-	let segments = 100;
+	let segments = document.getElementById("resolution").value;
 	for (let i = 0; i < segments; i++)
 	{
 		
