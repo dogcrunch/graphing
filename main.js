@@ -165,35 +165,36 @@ function lineGraph(i)
 	}
 }
 document.addEventListener("keypress", function(event) {
+	let scale = document.getElementById("updateGraph").checked ? 30 : 10
 	switch(event.key)
 	{
 		case "w":
-		yMin+=(yMax-yMin)/30
-		yMax+=(yMax-yMin)/30
+		yMin+=(yMax-yMin)/scale
+		yMax+=(yMax-yMin)/scale
 		break;
 		case "s":
-		yMin-=(yMax-yMin)/30
-		yMax-=(yMax-yMin)/30
+		yMin-=(yMax-yMin)/scale
+		yMax-=(yMax-yMin)/scale
 		break;
 		case "d":
-		xMin+=(xMax-xMin)/30
-		xMax+=(xMax-xMin)/30
+		xMin+=(xMax-xMin)/scale
+		xMax+=(xMax-xMin)/scale
 		break;
 		case "a":
-		xMin-=(xMax-xMin)/30
-		xMax-=(xMax-xMin)/30
+		xMin-=(xMax-xMin)/scale
+		xMax-=(xMax-xMin)/scale
 		break;
 		case "q":
-		yMin+=(yMax-yMin)/30
-		yMax-=(yMax-yMin)/30
-		xMin+=(xMax-xMin)/30
-		xMax-=(xMax-xMin)/30
+		yMin+=(yMax-yMin)/scale
+		yMax-=(yMax-yMin)/scale
+		xMin+=(xMax-xMin)/scale
+		xMax-=(xMax-xMin)/scale
 		break;
 		case "e":
-		yMin-=(yMax-yMin)/30
-		yMax+=(yMax-yMin)/30
-		xMin-=(xMax-xMin)/30
-		xMax+=(xMax-xMin)/30
+		yMin-=(yMax-yMin)/scale
+		yMax+=(yMax-yMin)/scale
+		xMin-=(xMax-xMin)/scale
+		xMax+=(xMax-xMin)/scale
 		break;
 		case "r":
 		yMin = -10;
@@ -285,6 +286,7 @@ function update()
 {
 	t = new Date().getTime()/1000;
 	try{
+		if (document.getElementById("updateGraph").checked)
 		graphFunc();
 
 	}
