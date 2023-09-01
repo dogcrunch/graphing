@@ -19,25 +19,31 @@ const parse = function(text)
 		text=text.slice(0,firstP)+text.slice(secondP+1,text.length);
 		addedLength += text.length-initLength;
 	}
-    console.log(text);
     return text;
 }
 
 const findEndOfGroup = function(text,start, backwards=false)
 {
     let p = 0;
-    for (let i = start; (backwards && i>=0) || (!backwards && i < text.length); i+=backwards?-1:1)
+    for (let i = start; (backwards && i>=0) || (!backwards && i < text.length); i+=(backwards?-1:1))
     {
-        if (text[i]=="(") p++;
-        else if (text[i]==")") p--;
-        if (text == ")"&&(p==0&&i!=start)) return i;
-        if (p==0&&"!@#$%^&*-+.,=".includes(text[i])) return backwards?(i+1):(i);
+        if (text[i]=="(") {
+            if (p==0&&backwards) return i+1;
+            p++;
+        }
+        else if (text[i]==")") {
+            if (p==0&&!backwards) return i-1;
+            p--;
+        }
+        if (text == ")"&&(p==0&&i!=start)) return i-1;
+        if (p==0&&" !@#$%^&*-+,=^\n".includes(text[i]))
+            return backwards?(i+1):(i-1);
     }
-    return backwards?0:text.length;
+    return backwards?0:text.length-1;
 }
 const multiplication = function(text)
 {
-    let occurences = [...text.matchAll(/[0-9)][A-Za-z(]/g)];
+    let occurences = [...text.matchAll(/((?<![A-Za-z])[0-9]|\))[A-Za-z(]/gm)];
     let add = 0;
     for (let i = 0; i < occurences.length; i++)
     {
@@ -51,22 +57,17 @@ const multiplication = function(text)
 
 const power = function(text)
 {
-    let occurences = [...text.matchAll(/([0-9a-zA-Z]+|\))\^([0-9a-zA-Z]+|\()/g)];
-    let add = 0;
-    for (let i = 0; i < occurences.length; i++)
+    for (let i = text.length; i >= 0; i--)
     {
-        occurences[i].index+=add;
-        let middle = text.indexOf("^",occurences[i].index);
+        if (text[i]!="^") continue;
         let end1;
-        end1 = findEndOfGroup(text,middle-1,true);
-
+        end1 = findEndOfGroup(text,i-1,true);
         let end2;
-        end2 = findEndOfGroup(text,middle+1,false);
-
-        let val1 = text.slice(end1,middle);
-        let val2 = text.slice(middle+1,end2);
-        text=text.substring(0, end1) + "pow("+val1+","+val2+")"+text.substring(end2);
-        add+=6;
+        end2 = findEndOfGroup(text,i+1,false);
+        let val1 = text.slice(end1,i);
+        let val2 = text.slice(i+1,end2+1);
+        text=text.substring(0, end1) + "pow("+val1+","+val2+")"+text.substring(end2+1);
+        i+=6
     }
     return text;
 }
