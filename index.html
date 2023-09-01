@@ -3,13 +3,60 @@
 
 <h1>graphing calculator 🤓</h1>
 
+
+<div id="_graphtype">
+<label for="graphtype">Graph Type:</label>
+<select name="graphtype" id="graphtype">
+  <option value="1d">Line</option>
+  <option value="2d">2D</option>
+</select>
+</div>
+<div id ="_colortype" style="display:none">
+<label for="colortype">Color Type:</label>
+<select name="colortype" id="colortype">
+  <option value="black">Black</option>
+  <option value="heat">Heat</option>
+  <option value="rainbow">Rainbow</option>
+</select>
+</div>
+<div id="_scaletype" style="display:none">
+<label for="scaletype">Scale Type:</label>
+<select name="scaletype" id="scaletype">
+  <option value="1d">Linear</option>
+  <option value="2d">Logarithmic</option>
+</select>
+</div>
+<div id="_graphmin" style="display:none">
+<label for="graphmin">Range Min:</label>
+<input type = "text" id = "graphmin" value = "-1"> 
+</div>
+<div id = "_graphmax" style="display:none">
+<label for="graphmax">Range Max:</label>
+<input type = "text" id = "graphmax" value = "1"> 
+</div>
 <textarea id="ex" name="ex" rows="8" cols="40" style="resize:none">
+// define stuff here
 </textarea>
+<div id = "mainerrortext" style="color:red; display: none;">FUCK OYU</div>
 <br>
-<button onclick = "graphFunc()"> GRAPH </button>
-<textarea id="eq" name="eq" rows="0" cols="33" style="resize:none; height:23px;overflow:hidden;transform:translateY(8px)">f(x)</textarea>
+<br>
+<div id = "graphs">
+  <div id = "temp" style="display: none;">
+  <input name="eq"  type = "text" style = "width:300px"> 
+  <div name = "errortext" style="color:red; display: none;">FUCK OYU</div>
+  </div>
+</div>
+
+<button onclick = "addGraph()" id = "add"> + </button>
+<button onclick = "popGraph()" id = "pop"> - </button>
 <br>
 <canvas id="canvas" width="400" height="400"></canvas>
+<script src = "monkey.js"></script>
+
+<script src = "math.js"></script>
+<script src = "noise.js"></script>
+
+
 <script src = "parser.js"></script>
 <script src = "functions.js"></script>
 <script src = "main.js"></script>
