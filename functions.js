@@ -19,6 +19,8 @@ const acos = (x) => Math.acos(x);
 const atan = (x) => Math.atan(x);
 
 const rgb = (r,g,b) => "rgb("+r+","+g+","+b+")"
+const xPix = (x) => balls(xMin, xMax, x)*canvas.width;
+const yPix = (y) => balls(yMin, yMax, y)*canvas.height;
 
 function hsv(h, s, v) {
 	h = abs(h);
