@@ -50,6 +50,10 @@ function graphFunc()
 		lineGraph(i);
 	}
 	}
+	let digits = floor(Math.log10(xMax-xMin));
+	let multiplier = pow(10,3-digits)
+	if (mouseHover)
+	ctx.strokeText("("+floor(cock(xMin,xMax,mouseX/canvas.width)*multiplier)/multiplier+","+floor(cock(yMin,yMax,mouseY/canvas.height)*multiplier)/multiplier+")",mouseX,mouseY)
 }
 
 function colorGraph(i)
@@ -214,6 +218,21 @@ function addGraph()
 
 
 }
+let mouseX, mouseY;
+let mouseHover = false;
+canvas.onmousemove = function(e) { 
+    mouseX = e.pageX - e.currentTarget.offsetLeft; 
+    mouseY = e.pageY - e.currentTarget.offsetTop; 
+}
+
+canvas.addEventListener("mouseleave", function (event) {
+	mouseHover = false
+  }, false);
+  canvas.addEventListener("mouseover", function (event) {
+	mouseHover = true;
+  }, false);
+
+
 function popGraph()
 {
 	let getIndex = graphInputs.indexOf(lastInputSelected.parentElement);
