@@ -174,34 +174,26 @@ document.addEventListener("keypress", function(event) {
 		case "w":
 		yMin+=(yMax-yMin)/scale
 		yMax+=(yMax-yMin)/scale
-		try{
-		onupkey()
-		}
-		catch{}
+		if (onupkey != undefined)
+			onupkey()
 		break;
 		case "s":
 		yMin-=(yMax-yMin)/scale
 		yMax-=(yMax-yMin)/scale
-		try{
-		ondownkey()
-		}
-		catch{}
+		if (ondownkey != undefined)
+			ondownkey()
 		break;
 		case "d":
 		xMin+=(xMax-xMin)/scale
 		xMax+=(xMax-xMin)/scale
-		try{
-		onrightkey()
-		}
-		catch{}
+		if (onrightkey != undefined)
+			onrightkey()
 		break;
 		case "a":
 		xMin-=(xMax-xMin)/scale
 		xMax-=(xMax-xMin)/scale
-		try{
-		onleftkey()
-		}
-		catch{}
+		if (onleftkey != undefined)
+			onleftkey()
 		break;
 		case "q":
 		yMin+=(yMax-yMin)/scale
