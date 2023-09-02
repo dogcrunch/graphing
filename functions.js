@@ -21,7 +21,7 @@ const atan = (x) => Math.atan(x);
 const rgb = (r,g,b) => "rgb("+r+","+g+","+b+")"
 const xPix = (x) => balls(xMin, xMax, x)*canvas.width;
 const yPix = (y) => balls(yMin, yMax, y)*canvas.height;
-
+const mod = (x,y) => ((x % y) + y) % y;
 function hsv(h, s, v) {
 	h = abs(h);
   var r, g, b;
