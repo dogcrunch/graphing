@@ -17,7 +17,9 @@ const sqrt = (x) => Math.sqrt(x);
 const asin = (x) => Math.asin(x);
 const acos = (x) => Math.acos(x);
 const atan = (x) => Math.atan(x);
-
+const deriv = function(f){
+	return (x)=>(f(x+0.001)-f(x))/0.001;
+}
 const rgb = (r,g,b) => "rgb("+r+","+g+","+b+")"
 const xPix = (x) => balls(xMin, xMax, x)*canvas.width;
 const yPix = (y) => balls(yMin, yMax, y)*canvas.height;
