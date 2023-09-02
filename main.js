@@ -24,11 +24,9 @@ function balls(a,b,v)
 	return (v-a)/(b-a);
 }
 
-
-function graphFunc()
+function executeText()
 {
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+	
 	let text = parse(ex.value);
 	document.getElementById("mainerrortext").style.display = "none";
 
@@ -36,9 +34,14 @@ function graphFunc()
 	eval(text);
 	}
 	catch(error){
-		document.getElementById("mainerrortext").innerHTML=error;
-		document.getElementById("mainerrortext").style.display = "";
+	document.getElementById("mainerrortext").innerHTML=error;
+	document.getElementById("mainerrortext").style.display = "";
 	}
+}
+function graphFunc()
+{
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+
 	
 	if (graphtype.value == "2d")
 	colorGraph(0);
@@ -171,22 +174,34 @@ document.addEventListener("keypress", function(event) {
 		case "w":
 		yMin+=(yMax-yMin)/scale
 		yMax+=(yMax-yMin)/scale
+		try{
 		onupkey()
+		}
+		catch{}
 		break;
 		case "s":
 		yMin-=(yMax-yMin)/scale
 		yMax-=(yMax-yMin)/scale
+		try{
 		ondownkey()
+		}
+		catch{}
 		break;
 		case "d":
 		xMin+=(xMax-xMin)/scale
 		xMax+=(xMax-xMin)/scale
+		try{
 		onrightkey()
+		}
+		catch{}
 		break;
 		case "a":
 		xMin-=(xMax-xMin)/scale
 		xMax-=(xMax-xMin)/scale
+		try{
 		onleftkey()
+		}
+		catch{}
 		break;
 		case "q":
 		yMin+=(yMax-yMin)/scale
